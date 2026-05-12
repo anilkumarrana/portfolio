@@ -1,14 +1,14 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "info"; 
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $database = "info"; 
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+// $conn = mysqli_connect($servername, $username, $password, $database);
  
-if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+//     die("Database connection failed: " . mysqli_connect_error());
+// }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // Sanitize inputs to prevent SQL injection and fix "index" errors
@@ -29,78 +29,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-   </script>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-   <link rel="icon" href="assect/anil-logo.png" type="image/png">
-   <link rel="stylesheet" href="assect/style.css">
-   <script src="assect/script.js"></script>
-
-    <title>Portfolio - Anil</title>
-
-</head>
-<body>
-   <!-- header start -->
-    <header>
-      <nav class="navabr">
-        <div class="left_side">
-            <a href="#"><img src="assect/logo.png" alt=""></a>
-        </div>
-        <div class="medle_side" id = "menu">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="about.php">About Us </a></li>
-                <li><a href="studies.php">Case Studies</a></li>
-                <li><a href="work.php">Recent Work</a></li>
-            </ul>
-        </div>
-        <div class="menu_icon">
-             <i class="bi bi-list" onclick="togglemenu()" style="cursor:pointer"></i>
-        </div>
-        <div class="right_side">
-            <button><a href="#" onclick="toggleLogin()">Get In Touch</a></button>
-            <span onclick="closeLogin()"></span>
-        </div>
-      </nav>
-
-      <!-- Get in Touch -->
-      <div class="info_box" id = "info">
-            <h3>Hey, Guys</h3>
-            <div class="info_img">
-               <img src="assect/logo.png" alt="">
-            </div>
-        <div class="info_imfo" id = "imfo">
-          <form action="" method="POST">
-            <input type="text"  name ="name" placeholder="Name" required>
-            <div class="mb-3">
-                <input type="text" name="phone" id="" placeholder="Phone No" required maxlength="10" >
-            </div>
-            <div>
-                <textarea name="message" id="" placeholder="Message" required maxlength="100" ></textarea>
-             </div>
-             <div class="mt-3">
-                <button type="submit" onclick="showMessage()">Send me</button>
-             </div>
-          </form>
-        </div>
-        <!-- Get in Touch end  -->
-      </div>
-    </header>
+<?php 
+    $pageTitle = "Portfolio - Anil Rana";
+    include 'components/header.php'; 
+?>
 
     <!-- hero -->
-
     <section class="hero">
         <div class="bg_animation">
             <div class="cube"></div>
@@ -118,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             </div>
             <div class="button">
                 <button class="btn-primary" onclick="playvideo()">View Work</button>
-                <button class="btn-secondary">Download CV</button>
+                <button class="btn-secondary" onclick="window.open('assect/resume.pdf', '_blank')">Download CV</button>
             </div>
         </div>
          <!-- self video  -->
@@ -130,7 +64,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           </div>
     </section>
 
-
     <!-- about section -->
     <section class="about" id="about">
         <div class="about_img_container reveal">
@@ -141,12 +74,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <div class="about_details reveal">
             <h2 class="section_title">About Me</h2>
             <h3>Building digital solutions with precision</h3>
-            <p>
-                I am a dedicated developer focused on building high-performance, scalable, and user-friendly web applications. 
-                My process involves transforming complex challenges into seamless digital realities through clean code 
-                and a deep understanding of modern UI/UX principles.
+             <p>
+                Hello! I'm Anil Rana, a Software Engineer based in Bengaluru with a passion for building robust and scalable web applications. 
+                My journey in development is driven by a desire to solve real-world problems through technology. I specialize in creating 
+                seamless user experiences and efficient architectures.
             </p>
-            <p>I thrive on continuous learning and implementing the latest industry standards to deliver precision in every project.</p>
+            <p>
+                Beyond coding, I am a problem solver at heart who enjoys collaborating with teams to deliver high-quality products. 
+                I thrive on continuous learning and staying updated with the latest industry standards to ensure precision in every project I undertake.
+            </p>
         </div>
     </section>
 
@@ -155,7 +91,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <div class="container">
             <h2 class="section_title">Work Experience</h2>
             <div class="job-grid">
-                <!-- Current Role -->
                 <div class="job-entry">
                     <div class="card-content">
                         <h3 class="job-title">Junior Developer <br><span class="company">@ Echo 11</span></h3>
@@ -164,7 +99,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     </div>
                 </div>
 
-                <!-- Previous Role: Techies Gateway -->
                 <div class="job-entry">
                     <div class="card-content">
                         <h3 class="job-title">Frontend Dev <br><span class="company">@ Techies Gateway</span></h3>
@@ -173,7 +107,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     </div>
                 </div>
 
-                <!-- Previous Role: Infinity Learn -->
                 <div class="job-entry">
                     <div class="card-content">
                         <h3 class="job-title">B2B Sales <br><span class="company">@ Infinity Learn</span></h3>
@@ -233,58 +166,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assect/logo.png" alt="Logo">
-                    <p class="footer-tagline">Building digital solutions with precision, scalability, and modern UI/UX principles. Let's turn your vision into reality.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#about"><i class="bi bi-chevron-right"></i> About Me</a></li>
-                        <li><a href="#experience"><i class="bi bi-chevron-right"></i> Experience</a></li>
-                        <li><a href="#testimonials"><i class="bi bi-chevron-right"></i> Testimonials</a></li>
-                        <li><a href="#" onclick="toggleLogin()">Get In Touch</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Let's Talk</h4>
-                    <p>Email: anilrana@example.com</p>
-                    <p>Location: Bengaluru, India</p>
-                    <div class="footer-social">
-                        <a href="https://wa.me/918294236223" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-                        <a href="https://www.linkedin.com/in/anil-kumar-8492/" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://github.com/anilkumararna/" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Anil Rana. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating Social Media Icons -->
-    <div class="socil_media">
-        <div class="whats_app">
-            <a href="https://wa.me/918294236223" target="_blank" title="Contact on WhatsApp">
-                <img src="assect/whatsaap_logo.png" alt="WhatsApp">
-            </a>
-        </div>
-        <div class="Linked_in">
-            <a href="https://www.linkedin.com/in/anil-kumar-8492/" target="_blank" title="LinkedIn Profile">
-                <img src="assect/linked_in.png" alt="LinkedIn">
-            </a>
-        </div>
-        <div class="github">
-            <a href="https://github.com/anilkumararna/" target="_blank" title="GitHub Profile">
-                <img src="assect/github.png" alt="GitHub">
-            </a>
-        </div>
-    </div>
-
-</body>
-</html>
+<?php include 'components/footer.php'; ?>

@@ -102,7 +102,19 @@ function moveSlider(direction) {
     slider.style.transform = `translateX(-${currentTestimonial * 100}%)`;
 }
 
+function initParallax() {
+    window.addEventListener('scroll', () => {
+        const watermark = document.querySelector('.bg-watermark');
+        if (watermark) {
+            const scrollValue = window.scrollY;
+            // The 0.15 multiplier controls the speed. Lower = subtler.
+            watermark.style.transform = `translate(-50%, calc(-50% + ${scrollValue * 0.15}px))`;
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     type();
     initRevealAnimations();
+    initParallax();
 });
