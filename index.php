@@ -1,30 +1,79 @@
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $database = "info"; 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "info"; 
 
-// $conn = mysqli_connect($servername, $username, $password, $database);
+// Enable internal reporting for mysqli errors
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+$conn = mysqli_connect($servername, $username, $password, $database);
  
-// if (!$conn) {
-//     die("Database connection failed: " . mysqli_connect_error());
-// }
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+
+// Robust table initialization
+mysqli_query($conn, "CREATE TABLE IF NOT EXISTS `information` (`name` VARCHAR(255), `email` VARCHAR(255), `message` TEXT)");
+
+// Ensure 'id' column exists and is Auto-Increment
+$columnCheck = mysqli_query($conn, "SHOW COLUMNS FROM `information` LIKE 'id'");
+$pkCheck = mysqli_query($conn, "SHOW KEYS FROM `information` WHERE Key_name = 'PRIMARY'");
+$hasPrimaryKey = mysqli_num_rows($pkCheck) > 0;
+
+if (mysqli_num_rows($columnCheck) == 0) {
+    // Add id column if missing. Only set as PRIMARY KEY if the table doesn't have one yet.
+    $query = "ALTER TABLE `information` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST";
+    if (!$hasPrimaryKey) {
+        $query .= ", ADD PRIMARY KEY (id)";
+    } else {
+        $query .= ", ADD KEY (id)";
+    }
+    mysqli_query($conn, $query);
+} else {
+    // If it exists but triggered errors, ensure it is actually AUTO_INCREMENT
+    $col = mysqli_fetch_assoc($columnCheck);
+    if (strpos($col['Extra'], 'auto_increment') === false) {
+        mysqli_query($conn, "ALTER TABLE `information` MODIFY `id` INT NOT NULL AUTO_INCREMENT");
+    }
+}
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    // Sanitize inputs to prevent SQL injection and fix "index" errors
-    $name = mysqli_real_escape_string($conn, $_POST['name'] ?? '');
-    $phone = mysqli_real_escape_string($conn, $_POST['phone'] ?? '');
-    $message = mysqli_real_escape_string($conn, $_POST['message'] ?? '');
+    $name = $_POST['name'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $message = $_POST['message'] ?? '';
 
-    $sql = "INSERT INTO `information` (`name`, `phone`, `message`) VALUES ('$name', '$phone', '$message');";
-    $result = mysqli_query($conn, $sql);
-
-    if($result){
-        echo "data save";
-    }else{
-        echo "data not save";
+    // Using Prepared Statements for better security and reliability
+    $stmt = mysqli_prepare($conn, "INSERT INTO `information` (`name`, `email`, `message`) VALUES (?, ?, ?)");
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "sss", $name, $email, $message);
+        try {
+            if(mysqli_stmt_execute($stmt)){
+                echo "<script>
+                        alert('Data saved successfully!');
+                        window.location.href='index.php';
+                      </script>";
+                exit();
+            }
+        } catch (mysqli_sql_exception $e) {
+            // Auto-fix for the common Duplicate Entry '0' error
+            if (str_contains($e->getMessage(), "Duplicate entry '0'")) {
+                try {
+                    // Re-run the fix logic safely
+                    mysqli_query($conn, "ALTER TABLE `information` MODIFY `id` INT NOT NULL AUTO_INCREMENT");
+                    echo "<script>alert('Database was out of sync. I have fixed it! Please try sending your message again.');</script>";
+                } catch (Exception $innerEx) {
+                    echo "<script>alert('Could not auto-fix database: " . addslashes($innerEx->getMessage()) . "');</script>";
+                }
+            } else {
+                echo "<script>alert('Database Error: " . addslashes($e->getMessage()) . "');</script>";
+            }
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "<script>alert('Failed to prepare statement: " . addslashes(mysqli_error($conn)) . "');</script>";
     }
-
 }
 
 ?>

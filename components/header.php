@@ -38,28 +38,60 @@
              <i class="bi bi-list" onclick="togglemenu()" style="cursor:pointer"></i>
         </div>
         <div class="right_side">
-            <button><a href="#" onclick="toggleLogin()">Get In Touch</a></button>
+            <button onclick="toggleLogin(event)">Get In Touch</button>
+
+            <div class="info_box" id="info">
+                <div class="info_header">
+                    <div class="header_content">
+                        <h3>Let's Connect</h3>
+                        <p>Have a project in mind? Drop a message!</p>
+                    </div>
+                    <i class="bi bi-x-lg close-btn" onclick="toggleLogin(event)"></i>
+                </div>
+                <div class="info_imfo" id="imfo">
+                    <form action="index.php" method="POST">
+                        <div class="custom_input_group">
+                            <i class="bi bi-person"></i>
+                            <input type="text" name="name" placeholder="Full Name" required>
+                        </div>
+                        <div class="custom_input_group">
+                            <i class="bi bi-envelope-at"></i>
+                            <input type="email" name="email" placeholder="Email Address" required maxlength="100">
+                        </div>
+                        <div class="custom_input_group">
+                            <textarea name="message" placeholder="How can I help you?" required maxlength="100"></textarea>
+                        </div>
+                        <button type="submit" class="form_submit_btn">
+                            Send Message <i class="bi bi-send-fill"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
       </nav>
-
-      <div class="info_box" id="info">
-            <h3>Hey, Guys</h3>
-            <div class="info_img">
-               <img src="assect/logo.png" alt="">
-            </div>
-        <div class="info_imfo" id="imfo">
-          <form action="" method="POST">
-            <input type="text" name="name" placeholder="Name" required>
-            <div class="mb-3">
-                <input type="text" name="phone" placeholder="Phone No" required maxlength="10">
-            </div>
-            <div>
-                <textarea name="message" placeholder="Message" required maxlength="100"></textarea>
-             </div>
-             <div class="mt-3">
-                <button type="submit" onclick="showMessage()">Send me</button>
-             </div>
-          </form>
-        </div>
-      </div>
     </header>
+
+    <!-- Custom Namskar Alert -->
+    <div id="customAlertBox" class="custom-alert-overlay">
+        <div class="custom-alert-card">
+            <span class="namskar-icon">🙏</span>
+            <h2 style="color: var(--white); font-family: 'Merriweather', serif; margin-bottom: 5px;">Namskar!</h2>
+            <p style="color: var(--slate); font-size: 15px; margin-bottom: 20px;">I'm Anil. Let's get in touch!</p>
+            
+            <form action="index.php" method="POST">
+                <div class="custom_input_group">
+                    <i class="bi bi-person"></i>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="custom_input_group">
+                    <i class="bi bi-telephone"></i>
+                    <input type="text" name="email" placeholder="Contact Details" required>
+                </div>
+                <input type="hidden" name="message" value="Automated greeting form submission.">
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" class="form_submit_btn" style="padding: 10px;">Submit</button>
+                    <button type="button" class="form_submit_btn" style="padding: 10px; background: transparent; border: 1px solid var(--primary-glow); color: var(--primary-glow);" onclick="closeCustomGreeting()">Maybe Later</button>
+                </div>
+            </form>
+        </div>
+    </div>

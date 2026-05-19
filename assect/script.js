@@ -10,12 +10,31 @@ function closemenu(){
 
 // Get In Touch 
 
-function toggleLogin(){
-    document.getElementById('info').style.display = "block";
+function toggleLogin(event){
+    if (event) event.stopPropagation();
+    const infoBox = document.getElementById('info');
+    
+    // Use getComputedStyle to check the actual display state reliably
+    const isVisible = window.getComputedStyle(infoBox).display === "block";
+    
+    if (isVisible) {
+        infoBox.style.display = "none";
+    } else {
+        infoBox.style.display = "block";
+    }
 }
 
 function closeLogin(){
     document.getElementById('info').style.display = "none";
+}
+
+// Custom Greeting Alert Functions
+function showCustomGreeting() {
+    document.getElementById('customAlertBox').style.display = 'flex';
+}
+
+function closeCustomGreeting() {
+    document.getElementById('customAlertBox').style.display = 'none';
 }
 
 // video play and pause 
@@ -35,9 +54,9 @@ window.addEventListener('click', function(event) {
     const infoModal = document.getElementById('info');
     const video = document.getElementById('video');
 
-    // Close info modal if clicking outside the box
-    if (event.target === infoModal) {
-        infoModal.style.display = 'none';
+    // Close info modal if clicking anywhere outside the box
+    if (infoModal.style.display === "block" && !infoModal.contains(event.target)) {
+        closeLogin();
     }
     if (event.target === video) {
         video.style.display = 'none';
@@ -117,4 +136,9 @@ document.addEventListener("DOMContentLoaded", () => {
     type();
     initRevealAnimations();
     initParallax();
+
+    // Alert user after 2 minutes of visiting
+    setTimeout(() => {
+        showCustomGreeting();
+    }, 120000);
 });
