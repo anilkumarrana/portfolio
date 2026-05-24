@@ -121,22 +121,23 @@ body{
 }
 .right_side button:hover { background: rgba(100, 255, 218, 0.1); }
 .info_box{
-    width: 90%;
-    max-width: 380px;
-    background-color: var(--light-navy);
-    backdrop-filter: blur(10px);
+    width: 400px;
+    max-width: 90vw;
+    background-color: rgba(17, 34, 64, 0.98);
+    backdrop-filter: blur(16px);
     position: absolute;
     right: 0;
     top: 70px;
-    border-radius: 10px;
+    border-radius: 12px;
     display: none;
     z-index: 1200;
-    box-shadow: 0 30px 60px rgba(2, 12, 27, 0.8);
+    box-shadow: 0 30px 60px rgba(2, 12, 27, 0.9);
     border: 1px solid rgba(100, 255, 218, 0.2);
-    padding: 25px;
+    padding: 30px;
+    max-height: 85vh;
+    overflow-y: auto;
     animation: formFadeIn 0.4s ease-out;
 }
-
 @keyframes formFadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -190,8 +191,8 @@ body{
 .custom_input_group textarea {
     width: 100%;
     background: var(--bg-navy);
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 6px;
     padding: 12px 12px 12px 40px;
     color: var(--white);
     transition: var(--transition);
@@ -697,23 +698,21 @@ body{
     }
 
     .info_box {
-        right: auto;
+        position: fixed;
+        top: 50%;
         left: 50%;
-        top: 75px;
-        transform: translateX(-50%);
-        padding: 15px;
-        width: 95%;
-    }
-
-    .skills-grid {
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+        right: auto;
+        max-height: 80vh;
+        overflow-y: auto;
     }
 }
 
 /* Reveal Animation Utility */
 .reveal {
-    position: relative;
     opacity: 0;
     transform: translateY(30px);
     transition: 1s all cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -1277,8 +1276,3 @@ body{
 }
 
 /* Footer & Testimonials Responsive */
-@media screen and (max-width: 768px) {
-    .footer-content { flex-direction: column; text-align: center; align-items: center; }
-    .testimonial-slider-wrapper { max-width: 100%; }
-    .testimonial-card { padding: 50px 20px 30px; }
-}

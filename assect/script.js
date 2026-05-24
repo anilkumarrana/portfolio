@@ -11,10 +11,10 @@ function closemenu(){
 // Get In Touch 
 
 function toggleLogin(event){
-    if (event) event.stopPropagation();
-    const infoBox = document.getElementById('info');
+    const ev = event || window.event;
+    if (ev) ev.stopPropagation();
     
-    // Use getComputedStyle to check the actual display state reliably
+    const infoBox = document.getElementById('info');
     const isVisible = window.getComputedStyle(infoBox).display === "block";
     
     if (isVisible) {
@@ -55,9 +55,11 @@ window.addEventListener('click', function(event) {
     const video = document.getElementById('video');
 
     // Close info modal if clicking anywhere outside the box
-    if (infoModal.style.display === "block" && !infoModal.contains(event.target)) {
+    const isInfoVisible = window.getComputedStyle(infoModal).display === "block";
+    if (isInfoVisible && !infoModal.contains(event.target)) {
         closeLogin();
     }
+    
     if (event.target === video) {
         video.style.display = 'none';
     }
