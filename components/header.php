@@ -30,8 +30,7 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about.php">About Us </a></li>
                 <li><a href="education.php">Education</a></li>
-                <li><a href="studies.php">Case Studies</a></li>
-                <li><a href="work.php">Recent Work</a></li>
+                <li><a href="cases.php">Case Studies</a></li>
             </ul>
         </div>
         <div class="menu_icon">

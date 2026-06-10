@@ -100,7 +100,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <p>Expertise in <span id="typewriter" class="highlight"></span></p>
             </div>
             <div class="button">
-                <button class="btn-primary" onclick="playvideo()">View Work</button>
+                <button class="btn-primary" onclick="window.location.href='cases.php'">View Work</button>
                 <button class="btn-secondary" onclick="window.open('assect/resume.pdf', '_blank')">Download CV</button>
             </div>
         </div>

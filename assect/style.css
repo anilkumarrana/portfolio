@@ -1414,3 +1414,71 @@ body{
 }
 
 /* Footer & Testimonials Responsive */
+
+/* Projects & Case Studies */
+.projects-section {
+    padding: 80px 10%;
+    background: var(--bg-navy);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.case-detail {
+    padding: 150px 10% 100px;
+    background: var(--bg-navy);
+}
+
+.case-header {
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.tech-stack-pills {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.tech-stack-pills span {
+    padding: 6px 15px;
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    color: var(--primary-glow);
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: monospace;
+}
+
+.case-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+}
+
+.case-image-placeholder {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--lightest-navy);
+    margin-bottom: 40px;
+}
+
+.case-sidebar .sidebar-box {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(245, 222, 179, 0.1);
+}
+
+.case-sidebar h4 {
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .case-content-grid { grid-template-columns: 1fr; }
+}
