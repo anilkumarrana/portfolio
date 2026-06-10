@@ -139,28 +139,40 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <section class="work-experience reveal" id="experience">
         <div class="container">
             <h2 class="section_title">Work Experience</h2>
-            <div class="job-grid">
-                <div class="job-entry">
-                    <div class="card-content">
-                        <h3 class="job-title">Junior Developer <br><span class="company">@ Echo 11</span></h3>
-                        <p class="job-dates">May 2026 - Present</p>
-                        <p class="short-desc">Building scalable apps and optimizing system performance with modern tech.</p>
+            <div class="job-grid reveal">
+                <!-- Experience Card 1 -->
+                <div class="edu-card">
+                    <div class="edu-icon-glow"></div>
+                    <div class="edu-card-icon"><i class="bi bi-laptop"></i></div>
+                    <div class="edu-card-content">
+                        <span class="edu-date">May 2026 - Present</span>
+                        <h3>Junior Developer</h3>
+                        <span class="edu-inst">@ Echo 11</span>
+                        <p>Building scalable apps and optimizing system performance with modern tech.</p>
                     </div>
                 </div>
 
-                <div class="job-entry">
-                    <div class="card-content">
-                        <h3 class="job-title">Frontend Dev <br><span class="company">@ Techies Gateway</span></h3>
-                        <p class="job-dates">Sept 2025 - April 2026</p>
-                        <p class="short-desc">Creating responsive UIs and interactive web components for client projects.</p>
+                <!-- Experience Card 2 -->
+                <div class="edu-card">
+                    <div class="edu-icon-glow"></div>
+                    <div class="edu-card-icon"><i class="bi bi-window-stack"></i></div>
+                    <div class="edu-card-content">
+                        <span class="edu-date">Sept 2025 - April 2026</span>
+                        <h3>Frontend Dev</h3>
+                        <span class="edu-inst">@ Techies Gateway</span>
+                        <p>Creating responsive UIs and interactive web components for client projects.</p>
                     </div>
                 </div>
 
-                <div class="job-entry">
-                    <div class="card-content">
-                        <h3 class="job-title">B2B Sales <br><span class="company">@ Infinity Learn</span></h3>
-                        <p class="job-dates">July 2025 - Sep 2025</p>
-                        <p class="short-desc">Managed corporate relations and client acquisition within the ed-tech sector.</p>
+                <!-- Experience Card 3 -->
+                <div class="edu-card">
+                    <div class="edu-icon-glow"></div>
+                    <div class="edu-card-icon"><i class="bi bi-briefcase"></i></div>
+                    <div class="edu-card-content">
+                        <span class="edu-date">July 2025 - Sep 2025</span>
+                        <h3>B2B Sales</h3>
+                        <span class="edu-inst">@ Infinity Learn</span>
+                        <p>Managed corporate relations and client acquisition within the ed-tech sector.</p>
                     </div>
                 </div>
             </div>

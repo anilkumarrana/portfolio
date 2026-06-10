@@ -681,8 +681,7 @@ body{
         width: 80px;
     }
     .job-grid {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr !important;
         gap: 30px;
     }
     .job-entry {
@@ -734,6 +733,128 @@ body{
     border-bottom: 1px solid rgba(245, 222, 179, 0.1);
 }
 
+/* Education Grid & Product-style Cards */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    perspective: 1500px;
+}
+
+.edu-card {
+    background: var(--light-navy);
+    padding: 40px 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transform-style: preserve-3d;
+    position: relative;
+    background: rgba(17, 34, 64, 0.6);
+    backdrop-filter: blur(10px);
+    background-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(100, 255, 218, 0.1) 0%, transparent 80%);
+    overflow: hidden; /* Ensures background gradients are contained */
+    will-change: transform;
+}
+
+.edu-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-glow);
+    color: var(--bg-navy);
+    padding: 5px 14px; /* Slightly larger padding */
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transform: translateZ(60px);
+    letter-spacing: 1px;
+}
+
+.edu-card-icon {
+    font-size: 40px;
+    color: var(--primary-glow);
+    margin-bottom: 20px;
+    transform: translateZ(45px);
+    opacity: 0.8;
+}
+
+.edu-icon-glow {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: var(--primary-glow);
+    filter: blur(80px);
+    opacity: 0.1;
+    top: -20px;
+    left: -20px;
+    pointer-events: none;
+}
+
+.edu-card-content {
+    transform: translateZ(35px);
+}
+
+.edu-cta {
+    margin-top: 20px;
+    color: var(--primary-glow);
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 14px;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edu-cta:hover {
+    gap: 12px;
+    color: var(--white);
+}
+
+.edu-card:hover {
+    border-color: var(--primary-glow);
+    box-shadow: 0 40px 80px rgba(2, 12, 27, 0.8), 0 0 30px rgba(100, 255, 218, 0.05);
+    background: rgba(17, 34, 64, 0.8);
+}
+
+.edu-date {
+    color: var(--primary-glow);
+    font-family: monospace;
+    font-size: 15px; /* Slightly larger */
+    margin-bottom: 8px;
+    font-weight: 600;
+    display: block;
+}
+
+.edu-card h3 {
+    color: var(--white);
+    font-size: 24px;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    font-family: "Merriweather", serif;
+}
+
+.edu-inst {
+    color: var(--secondary-glow);
+    font-size: 16px;
+    margin-bottom: 18px;
+    font-weight: 500;
+    display: block;
+}
+
+.edu-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--slate);
+    margin: 0;
+}
+
+/* Education Roadmap Section */
 .education {
     width: 100%;
     min-height: 60vh;
@@ -952,13 +1073,18 @@ body{
     z-index: 2;
 }
 .timeline-content {
-    background: rgba(2, 12, 27, 0.3);
-    padding: 30px;
+    background: var(--light-navy); /* More distinct background */
+    padding: 35px; /* Slightly increased padding */
     border-radius: 12px;
     border: 1px solid rgba(245, 222, 179, 0.05);
+    box-shadow: 0 5px 15px rgba(2, 12, 27, 0.5); /* Added subtle shadow */
     transition: 0.3s;
 }
-.timeline-content:hover { border-color: rgba(100, 255, 218, 0.3); transform: translateX(10px); }
+.timeline-content:hover {
+    border-color: var(--primary-glow); /* Highlight border on hover */
+    transform: translateY(-5px); /* Lift card slightly */
+    box-shadow: 0 15px 30px rgba(2, 12, 27, 0.7); /* More pronounced shadow on hover */
+}
 .timeline-date { color: #64ffda; font-family: monospace; font-size: 14px; display: block; margin-bottom: 10px; }
 .timeline-content h4 { color: #ccd6f6; margin-bottom: 10px; }
 .timeline-comp { color: wheat; font-size: 16px; margin-left: 5px; }
@@ -989,6 +1115,7 @@ body{
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    perspective: 1500px;
 }
 
 .skill-item {
@@ -1033,11 +1160,22 @@ body{
 }
 
 .job-grid {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    perspective: 1200px; /* Crucial for 3D depth */
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    perspective: 1500px;
+    margin-top: 50px;
+}
+
+.job-grid .edu-card {
+    border-top: 3px solid var(--primary-glow);
+    height: 100%;
+    background: linear-gradient(135deg, rgba(17, 34, 64, 0.7) 0%, rgba(10, 25, 47, 0.9) 100%);
+}
+
+.job-grid .edu-card:hover {
+    border-top-width: 6px;
+    background: rgba(17, 34, 64, 0.9);
 }
 
 .work-experience .section_title {

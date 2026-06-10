@@ -11,7 +11,7 @@
                     <ul>
                         <li><a href="index.php#about"><i class="bi bi-chevron-right"></i> About Me</a></li>
                         <li><a href="index.php#experience"><i class="bi bi-chevron-right"></i> Experience</a></li>
-                        <li><a href="about.php#education"><i class="bi bi-chevron-right"></i> Education</a></li>
+                        <li><a href="education.php"><i class="bi bi-chevron-right"></i> Education</a></li>
                         <li><a href="index.php#testimonials"><i class="bi bi-chevron-right"></i> Testimonials</a></li>
                         <li><a href="#" onclick="toggleLogin()">Get In Touch</a></li>
                     </ul>

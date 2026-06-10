@@ -48,36 +48,54 @@
     <section class="skills-section reveal">
         <div class="container">
             <h2 class="section_title">My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <i class="bi bi-code-slash"></i>
-                    <h3>Frontend Development</h3>
-                    <p>HTML, CSS, JavaScript, React, Vue.js, Bootstrap</p>
+            <div class="skills-grid reveal">
+                <div class="edu-card">
+                    <div class="edu-icon-glow"></div>
+                    <div class="edu-card-icon"><i class="bi bi-code-slash"></i></div>
+                    <div class="edu-card-content">
+                        <h3>Frontend Development</h3>
+                        <p>HTML, CSS, JavaScript, React, Vue.js, Bootstrap</p>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="bi bi-server"></i>
-                    <h3>Backend Development</h3>
-                    <p>Node.js, Express, PHP, Python, SQL, MongoDB</p>
+                <div class="edu-card">
+                    <div class="edu-icon-glow"></div>
+                    <div class="edu-card-icon"><i class="bi bi-server"></i></div>
+                    <div class="edu-card-content">
+                        <h3>Backend Development</h3>
+                        <p>Node.js, Express, PHP, Python, SQL, MongoDB</p>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="bi bi-cloud"></i>
-                    <h3>Cloud & DevOps</h3>
-                    <p>AWS (EC2, S3), Docker, Git, CI/CD</p>
+                <div class="edu-card">
+                    <div class="edu-icon-glow"></div>
+                    <div class="edu-card-icon"><i class="bi bi-cloud"></i></div>
+                    <div class="edu-card-content">
+                        <h3>Cloud & DevOps</h3>
+                        <p>AWS (EC2, S3), Docker, Git, CI/CD</p>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="bi bi-tools"></i>
-                    <h3>Tools & Methodologies</h3>
-                    <p>VS Code, Figma, Agile, RESTful APIs, Git Workflow</p>
+                <div class="edu-card">
+                    <div class="edu-icon-glow"></div>
+                    <div class="edu-card-icon"><i class="bi bi-tools"></i></div>
+                    <div class="edu-card-content">
+                        <h3>Tools & Workflow</h3>
+                        <p>VS Code, Figma, Agile, RESTful APIs, Git Workflow</p>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="bi bi-database"></i>
-                    <h3>Databases</h3>
-                    <p>MySQL, PostgreSQL, MongoDB</p>
+                <div class="edu-card">
+                    <div class="edu-icon-glow"></div>
+                    <div class="edu-card-icon"><i class="bi bi-database"></i></div>
+                    <div class="edu-card-content">
+                        <h3>Databases</h3>
+                        <p>MySQL, PostgreSQL, MongoDB</p>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="bi bi-gear"></i>
-                    <h3>Other</h3>
-                    <p>Problem Solving, Data Structures, Algorithms, UI/UX Principles</p>
+                <div class="edu-card">
+                    <div class="edu-icon-glow"></div>
+                    <div class="edu-card-icon"><i class="bi bi-gear"></i></div>
+                    <div class="edu-card-content">
+                        <h3>Other Tech</h3>
+                        <p>Problem Solving, Data Structures, Algorithms, UI/UX Principles</p>
+                    </div>
                 </div>
             </div>
         </div>
